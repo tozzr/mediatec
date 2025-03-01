@@ -1,12 +1,9 @@
-package com.tozzr.mediatec;
+package com.tozzr.mediatec.users;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import com.tozzr.mediatec.users.User;
-import com.tozzr.mediatec.users.UserRepository;
 
 @Service
 class CustomUserDetailsService implements UserDetailsService {

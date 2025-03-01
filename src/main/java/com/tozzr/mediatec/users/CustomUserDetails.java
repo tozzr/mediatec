@@ -1,4 +1,4 @@
-package com.tozzr.mediatec;
+package com.tozzr.mediatec.users;
 
 import java.util.Collection;
 import java.util.List;
@@ -6,9 +6,7 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.tozzr.mediatec.users.User;
-
-class CustomUserDetails implements UserDetails {
+public class CustomUserDetails implements UserDetails {
     
 	private static final long serialVersionUID = 1L;
 	

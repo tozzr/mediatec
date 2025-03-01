@@ -16,6 +16,12 @@ class Author {
 	
 	private String name;
 
+	Author() {}
+	
+	Author(Integer id) {
+		this.id = id;
+	}
+	
 	public Integer getId() {
 		return id;
 	}

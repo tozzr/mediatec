@@ -18,6 +18,12 @@ class Artist {
 	
 	private String name;
 
+	Artist() {}
+	
+	Artist(Integer id) {
+		this.id = id;
+	}
+	
 	public Integer getId() {
 		return id;
 	}

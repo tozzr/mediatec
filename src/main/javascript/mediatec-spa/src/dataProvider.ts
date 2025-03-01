@@ -1,6 +1,7 @@
 import { fetchUtils } from "react-admin";
 
-const apiUrl = "http://localhost:8080/api";
+const apiUrl = "http://localhost:8080";
+
 const httpClient = (url, options = {}) => {
 	const token = localStorage.getItem("token");
 
@@ -24,13 +25,20 @@ const dataProvider = {
 		const url = `${apiUrl}/${resource}?${query}`;
 
 		const { json } = await httpClient(url);
-
+		console.log(json._embedded[resource])
 		return {
-			data: json.content,
-			total: json.totalElements
+			data: json._embedded[resource],
+			total: json.page.totalElements
 		};
 	},
 
+	getMany: async (resource, params) => {
+		const query = params.ids.map(id => `ids=${id}`).join('&');
+		const url = `${apiUrl}/${resource}/search/findByIdIn?${query}`;
+		const { json } = await httpClient(url);
+		return { data: json._embedded[resource] };
+	},
+	
 	getOne: async (resource, params) => {
 		const { json } = await httpClient(`${apiUrl}/${resource}/${params.id}`);
 		return { data: json };

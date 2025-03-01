@@ -1,9 +1,9 @@
 import { List, SimpleList } from 'react-admin';
 
-export const MovieList = () => (
+export const AuthorList = () => (
 	<List>
 		<SimpleList
-			primaryText={record => record.title}
+			primaryText={record => record.name}
 		/>
 	</List>
 );

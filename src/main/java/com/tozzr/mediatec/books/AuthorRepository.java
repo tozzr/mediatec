@@ -1,11 +1,13 @@
 package com.tozzr.mediatec.books;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
-interface AuthorRepository extends JpaRepository<Author, Integer> {
-	
-	Page<Author> findAll(Pageable pageable);
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.rest.core.annotation.RestResource;
+
+@RestResource(path = "authors", rel = "authors")
+interface AuthorRepository extends PagingAndSortingRepository<Author, Integer> {
+
+	List<Author> findByIdIn(List<Integer> ids);
 	
 }

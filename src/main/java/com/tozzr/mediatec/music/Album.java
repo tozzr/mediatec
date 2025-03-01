@@ -1,5 +1,8 @@
 package com.tozzr.mediatec.music;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,7 +20,10 @@ class Album {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	private String title;
+	
 	@ManyToOne
+	@JsonIgnore
 	private Artist artist;
 
 	Integer releaseYear;
@@ -32,6 +38,14 @@ class Album {
 		this.id = id;
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	public Artist getArtist() {
 		return artist;
 	}
@@ -40,6 +54,15 @@ class Album {
 		this.artist = artist;
 	}
 
+	@JsonProperty("artistId") // Expose only the Author ID
+	public Integer getArtistId() {
+		return (artist != null) ? artist.getId() : null;
+	}
+
+	public void setAuthorId(Integer artistId) {
+		this.artist = (artistId != null) ? new Artist(artistId) : null;
+	}
+	
 	public Integer getReleaseYear() {
 		return releaseYear;
 	}
