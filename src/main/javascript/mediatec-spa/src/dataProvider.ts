@@ -25,7 +25,7 @@ const dataProvider = {
 		const url = `${apiUrl}/${resource}?${query}`;
 
 		const { json } = await httpClient(url);
-		console.log(json._embedded[resource])
+
 		return {
 			data: json._embedded[resource],
 			total: json.page.totalElements
@@ -38,7 +38,7 @@ const dataProvider = {
 		const { json } = await httpClient(url);
 		return { data: json._embedded[resource] };
 	},
-	
+
 	getOne: async (resource, params) => {
 		const { json } = await httpClient(`${apiUrl}/${resource}/${params.id}`);
 		return { data: json };

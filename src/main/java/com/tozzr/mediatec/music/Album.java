@@ -59,7 +59,7 @@ class Album {
 		return (artist != null) ? artist.getId() : null;
 	}
 
-	public void setAuthorId(Integer artistId) {
+	public void setArtistId(Integer artistId) {
 		this.artist = (artistId != null) ? new Artist(artistId) : null;
 	}
 	

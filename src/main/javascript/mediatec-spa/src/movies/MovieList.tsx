@@ -1,9 +1,10 @@
-import { List, SimpleList } from 'react-admin';
+import { Datagrid, List, ReferenceField, TextField } from 'react-admin';
 
 export const MovieList = () => (
 	<List>
-		<SimpleList
-			primaryText={record => record.title}
-		/>
+		<Datagrid>
+			<TextField source="title" />
+			<ReferenceField source="directorId" reference="directors" />
+		</Datagrid>
 	</List>
 );
